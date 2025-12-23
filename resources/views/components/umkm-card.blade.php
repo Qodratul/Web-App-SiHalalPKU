@@ -22,7 +22,7 @@
         </h3>
 
         <!-- Halal Badge -->
-        @if($umkm->status_halal)
+        @if($umkm->statusHalal)
             <div class="bg-[#bbe6c0] border border-[#2d7e37] rounded px-1 md:px-2 py-0.5 inline-block mb-1">
                 <span class="text-[#0a440d] text-[4px] md:text-[10px] font-semibold">Tersertifikasi Halal</span>
             </div>

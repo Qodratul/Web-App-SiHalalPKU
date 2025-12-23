@@ -133,10 +133,10 @@
                     <div class="mb-3 md:mb-4">
                         <label class="block text-sm md:text-xl font-semibold text-[#6b6b6b] mb-1 md:mb-2">Status Sertifikat Halal</label>
                         <div class="relative">
-                            <select name="status_halal" 
+                            <select name="statusHalal" 
                                     class="w-full h-[38px] md:h-[52px] px-4 md:px-6 bg-[#ccc] border border-[#2d7e37] rounded-[16px] md:rounded-[24px] shadow-md text-sm md:text-xl font-semibold text-[#2e2c2c] appearance-none focus:outline-none focus:ring-2 focus:ring-[#2d7e37]">
-                                <option value="1" {{ $umkm->status_halal ? 'selected' : '' }}>Tersertifikat Halal</option>
-                                <option value="0" {{ !$umkm->status_halal ? 'selected' : '' }}>Belum Tersertifikat</option>
+                                <option value="1" {{ $umkm->statusHalal ? 'selected' : '' }}>Tersertifikat Halal</option>
+                                <option value="0" {{ !$umkm->statusHalal ? 'selected' : '' }}>Belum Tersertifikat</option>
                             </select>
                             <svg class="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-4 h-4 md:w-6 md:h-6 text-gray-600 pointer-events-none" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z"/>

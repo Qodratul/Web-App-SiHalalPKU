@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('nama_usaha');
             $table->text('alamat');
             $table->string('kontak')->nullable();
-            $table->boolean('status_halal')->default(true);
+            $table->boolean('statusHalal')->default(true);
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
             $table->text('deskripsi')->nullable();

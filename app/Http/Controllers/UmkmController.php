@@ -84,7 +84,7 @@ class UmkmController extends Controller
             'longitude' => 'required|numeric',
             'deskripsi' => 'nullable|string',
             'foto_usaha' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'status_halal' => 'boolean',
+            'statusHalal' => 'boolean',
             'produks' => 'nullable|array',
             'produks.*.nama_produk' => 'required_with:produks|string|max:255',
             'produks.*.harga' => 'required_with:produks|numeric|min:0',
@@ -100,7 +100,7 @@ class UmkmController extends Controller
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
                 'deskripsi' => $request->deskripsi,
-                'status_halal' => $request->input('status_halal', '1') == '1',
+                'statusHalal' => $request->input('statusHalal', '1') == '1',
                 'foto_usaha' => $request->file('foto_usaha'),
             ];
 
@@ -233,7 +233,7 @@ class UmkmController extends Controller
             'longitude' => 'required|numeric',
             'deskripsi' => 'nullable|string',
             'foto_usaha' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'status_halal' => 'boolean',
+            'statusHalal' => 'boolean',
             'produks' => 'nullable|array',
             'produks.*.nama_produk' => 'required_with:produks|string|max:255',
             'produks.*.harga' => 'required_with:produks|numeric|min:0',
@@ -249,7 +249,7 @@ class UmkmController extends Controller
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
                 'deskripsi' => $request->deskripsi,
-                'status_halal' => $request->input('status_halal', '1') == '1',
+                'statusHalal' => $request->input('statusHalal', '1') == '1',
             ];
 
             // Add foto_usaha only if new file uploaded

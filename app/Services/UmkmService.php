@@ -353,7 +353,7 @@ class UmkmService
         return [
             'total' => $all->count(),
             'total_umkm' => $all->count(),
-            'tersertifikasi' => $all->where('status_halal', true)->count(),
+            'tersertifikasi' => $all->where('statusHalal', true)->count(),
             'total_produk' => $all->sum(function ($umkm) {
                 return $umkm->produks->count();
             }),

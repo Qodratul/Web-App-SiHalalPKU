@@ -26,7 +26,7 @@ class Umkm extends Model
         'nama_usaha',
         'alamat',
         'kontak',
-        'status_halal',
+        'statusHalal',
         'latitude',
         'longitude',
         'deskripsi',
@@ -39,7 +39,7 @@ class Umkm extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'status_halal' => 'boolean',
+        'statusHalal' => 'boolean',
         'latitude' => 'decimal:8',
         'longitude' => 'decimal:8',
     ];

@@ -104,7 +104,7 @@
                             <h3 class="text-sm font-bold text-[#3a3a3a] truncate">{{ $umkm->nama_usaha }}</h3>
                             <p class="text-[10px] text-gray-600 truncate">{{ $umkm->alamat }}</p>
                             <p class="text-[10px] text-gray-600">{{ $umkm->kontak ?? '-' }}</p>
-                            @if($umkm->status_halal)
+                            @if($umkm->statusHalal)
                                 <span class="inline-block mt-1 px-2 py-0.5 bg-[#bbe6c0] border border-[#2d7e37] rounded text-[#0a440d] text-[8px] font-semibold">
                                     Tersertifikasi Halal
                                 </span>
@@ -224,7 +224,7 @@
 
                                 <!-- Status Halal -->
                                 <td class="py-4 px-6">
-                                    @if($umkm->status_halal)
+                                    @if($umkm->statusHalal)
                                         <span class="inline-block px-4 py-1 bg-[#bbe6c0] border border-[#2d7e37] rounded text-[#0a440d] text-sm font-semibold">
                                             Tersertifikasi Halal
                                         </span>
