@@ -2,11 +2,29 @@
 
 namespace App\Services;
 
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cloudinary\Cloudinary;
+use Cloudinary\Api\Upload\UploadApi;
+use Illuminate\Http\UploadedFile;
 use Exception;
 
 class CloudinaryService
 {
+    protected Cloudinary $cloudinary;
+
+    public function __construct()
+    {
+        $this->cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => config('cloudinary.cloud_name'),
+                'api_key' => config('cloudinary.api_key'),
+                'api_secret' => config('cloudinary.api_secret'),
+            ],
+            'url' => [
+                'secure' => true,
+            ],
+        ]);
+    }
+
     /**
      * Upload image to Cloudinary.
      *
@@ -18,16 +36,28 @@ class CloudinaryService
     public function uploadImage($file, string $folder = 'umkm'): string
     {
         try {
-            $uploadedFile = Cloudinary::upload($file->getRealPath(), [
+            // Check if file is valid UploadedFile
+            if (!$file instanceof UploadedFile) {
+                throw new Exception('File bukan UploadedFile yang valid');
+            }
+
+            if (!$file->isValid()) {
+                throw new Exception('File tidak valid: ' . $file->getErrorMessage());
+            }
+
+            // Upload using Cloudinary SDK
+            $result = $this->cloudinary->uploadApi()->upload($file->getRealPath(), [
                 'folder' => "web-map-umkm-halal/{$folder}",
                 'resource_type' => 'image',
-                'transformation' => [
-                    'quality' => 'auto',
-                    'fetch_format' => 'auto',
-                ],
             ]);
 
-            return $uploadedFile->getSecurePath();
+            $url = $result['secure_url'] ?? null;
+            
+            if (empty($url)) {
+                throw new Exception('URL gambar kosong setelah upload');
+            }
+
+            return $url;
         } catch (Exception $e) {
             throw new Exception('Gagal mengupload gambar: ' . $e->getMessage());
         }
@@ -46,7 +76,7 @@ class CloudinaryService
             $publicId = $this->extractPublicId($url);
             
             if ($publicId) {
-                Cloudinary::destroy($publicId);
+                $this->cloudinary->uploadApi()->destroy($publicId);
                 return true;
             }
             
