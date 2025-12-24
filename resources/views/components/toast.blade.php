@@ -1,4 +1,4 @@
-<div id="toast-container" class="fixed top-4 right-4 z-[9998] flex flex-col gap-3 max-w-sm w-full pointer-events-none">
+<div id="toast-container" class="fixed top-2 right-2 md:top-4 md:right-4 z-[9998] flex flex-col gap-2 md:gap-3 max-w-[280px] md:max-w-sm w-full pointer-events-none px-2 md:px-0">
     
 </div>
 
@@ -94,16 +94,16 @@
 
 <script>
     const toastIcons = {
-        success: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        success: `<svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>`,
-        error: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        error: `<svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>`,
-        warning: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        warning: `<svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
         </svg>`,
-        info: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        info: `<svg class="w-5 h-5 md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>`
     };
@@ -151,9 +151,9 @@
         const toastId = 'toast-' + Date.now();
         
         const toastHtml = `
-            <div id="${toastId}" class="toast-notification ${style.bg} rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm border border-white/10">
-                <div class="p-4">
-                    <div class="flex items-start gap-3">
+            <div id="${toastId}" class="toast-notification ${style.bg} rounded-lg md:rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm border border-white/10">
+                <div class="p-2.5 md:p-4">
+                    <div class="flex items-start gap-2 md:gap-3">
                         <!-- Icon -->
                         <div class="${style.icon} flex-shrink-0 mt-0.5">
                             ${icon}
@@ -161,13 +161,13 @@
                         
                         <!-- Content -->
                         <div class="flex-1 min-w-0">
-                            <h4 class="${style.text} font-bold text-sm">${title}</h4>
-                            <p class="${style.text}/90 text-sm mt-0.5">${message}</p>
+                            <h4 class="${style.text} font-bold text-xs md:text-sm">${title}</h4>
+                            <p class="${style.text}/90 text-xs md:text-sm mt-0.5">${message}</p>
                         </div>
                         
                         <!-- Close Button -->
                         <button onclick="removeToast('${toastId}')" class="${style.text}/70 hover:${style.text} transition-colors flex-shrink-0">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg class="w-4 h-4 md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
                             </svg>
                         </button>
@@ -175,7 +175,7 @@
                 </div>
                 
                 <!-- Progress Bar -->
-                <div class="h-1 ${style.progress} toast-progress" style="animation-duration: ${duration}ms"></div>
+                <div class="h-0.5 md:h-1 ${style.progress} toast-progress" style="animation-duration: ${duration}ms"></div>
             </div>
         `;
         
@@ -215,29 +215,29 @@
         
         const overlayId = 'confirm-overlay-' + Date.now();
         const overlayHtml = `
-            <div id="${overlayId}" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-                <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full transform scale-95 transition-transform duration-300 overflow-hidden" id="${overlayId}-dialog">
+            <div id="${overlayId}" class="fixed inset-0 z-[9999] flex items-center justify-center p-3 md:p-4 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-2xl max-w-[320px] md:max-w-md w-full transform scale-95 transition-transform duration-300 overflow-hidden" id="${overlayId}-dialog">
                     <!-- Header -->
-                    <div class="${style.bg} px-6 py-4">
-                        <div class="flex items-center gap-3">
+                    <div class="${style.bg} px-4 md:px-6 py-3 md:py-4">
+                        <div class="flex items-center gap-2 md:gap-3">
                             <div class="${style.icon}">
                                 ${toastIcons[type]}
                             </div>
-                            <h3 class="${style.text} font-bold text-lg">${title}</h3>
+                            <h3 class="${style.text} font-bold text-base md:text-lg">${title}</h3>
                         </div>
                     </div>
                     
                     <!-- Content -->
-                    <div class="px-6 py-5">
-                        <p class="text-gray-700">${message}</p>
+                    <div class="px-4 md:px-6 py-4 md:py-5">
+                        <p class="text-gray-700 text-sm md:text-base">${message}</p>
                     </div>
                     
                     <!-- Actions -->
-                    <div class="px-6 py-4 bg-gray-50 flex justify-end gap-3">
-                        <button onclick="closeConfirm('${overlayId}', false)" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-100 transition-colors">
+                    <div class="px-4 md:px-6 py-3 md:py-4 bg-gray-50 flex justify-end gap-2 md:gap-3">
+                        <button onclick="closeConfirm('${overlayId}', false)" class="px-3 md:px-4 py-1.5 md:py-2 rounded-lg border border-gray-300 text-gray-700 text-sm md:text-base font-medium hover:bg-gray-100 transition-colors">
                             ${cancelText}
                         </button>
-                        <button onclick="closeConfirm('${overlayId}', true)" class="px-4 py-2 rounded-lg ${style.bg} text-white font-medium hover:opacity-90 transition-opacity">
+                        <button onclick="closeConfirm('${overlayId}', true)" class="px-3 md:px-4 py-1.5 md:py-2 rounded-lg ${style.bg} text-white text-sm md:text-base font-medium hover:opacity-90 transition-opacity">
                             ${confirmText}
                         </button>
                     </div>
