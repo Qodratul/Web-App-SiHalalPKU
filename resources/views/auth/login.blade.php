@@ -7,7 +7,7 @@
 <div class="min-h-screen flex flex-col md:flex-row">
     <!-- Left Side - Form -->
     <div class="w-full md:w-1/2 bg-white flex flex-col items-center px-4 md:px-16 py-6 md:py-8 min-h-screen">
-        <!-- Logo Section - Fixed at top -->
+        <!-- Logo Section -->
         <div class="w-full max-w-[356px] md:max-w-[584px] flex items-center gap-1 md:gap-2 flex-shrink-0">
             <img src="{{ asset('images/logo/logo_lppm.webp') }}" alt="LPPM UIN SUSKA RIAU" class="h-[39px] w-auto md:h-[60px] object-contain">
             <img src="{{ asset('images/logo/pusatp3h.webp') }}" alt="Pusat P3H" class="h-[39px] w-auto md:h-[60px] object-contain">
@@ -15,7 +15,7 @@
             <img src="{{ asset('images/logo/logo_bhalal.webp') }}" alt="HALAL" class="h-[34px] w-auto md:h-[55px] object-contain">
         </div>
 
-        <!-- Form Container - Centered in remaining space -->
+        <!-- Form Container -->
         <div class="w-full max-w-[356px] md:max-w-[584px] flex-1 flex flex-col justify-center py-6 md:py-8">
             <!-- Title -->
             <h1 class="text-2xl md:text-4xl font-semibold text-black mb-1 md:mb-2">
