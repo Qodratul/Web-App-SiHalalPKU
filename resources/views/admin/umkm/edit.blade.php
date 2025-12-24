@@ -300,16 +300,21 @@ function addProduct() {
     const imageInput = document.getElementById('temp-product-image');
 
     if (!namaProduk || !hargaProduk) {
-        alert('Mohon isi nama dan harga produk');
+        showToast('Mohon isi nama dan harga produk', 'warning');
         return;
     }
 
     const productsList = document.getElementById('products-list');
     const placeholderUrl = "{{ asset('images/placeholder_produk.webp') }}";
+    
+    // Get preview image src for display
+    const previewImg = document.querySelector('#product-image-preview img');
+    const imgSrc = previewImg ? previewImg.src : placeholderUrl;
+    
     const productHtml = `
         <div class="flex items-center gap-4 p-3 bg-white rounded-lg border border-gray-200" id="product-${productIndex}">
             <div class="w-[50px] h-[50px] bg-gray-200 rounded-lg overflow-hidden flex-shrink-0" id="product-img-${productIndex}">
-                <img src="${placeholderUrl}" class="w-full h-full object-cover" alt="Product">
+                <img src="${imgSrc}" class="w-full h-full object-cover" alt="Product">
             </div>
             <div class="flex-1">
                 <p class="font-semibold text-gray-800">${namaProduk}</p>
@@ -322,15 +327,29 @@ function addProduct() {
             </button>
             <input type="hidden" name="produks[${productIndex}][nama_produk]" value="${namaProduk}">
             <input type="hidden" name="produks[${productIndex}][harga]" value="${hargaProduk}">
+            <div id="product-file-container-${productIndex}"></div>
         </div>
     `;
 
     productsList.insertAdjacentHTML('beforeend', productHtml);
 
-    // Copy image preview if exists
-    const previewImg = document.querySelector('#product-image-preview img');
-    if (previewImg) {
-        document.getElementById(`product-img-${productIndex}`).innerHTML = `<img src="${previewImg.src}" class="w-full h-full object-cover" alt="Product">`;
+    // Move the file input to the product container with correct name
+    if (imageInput.files && imageInput.files.length > 0) {
+        // Clone the file input and rename it
+        const newFileInput = imageInput.cloneNode(true);
+        newFileInput.id = `product-file-${productIndex}`;
+        newFileInput.name = `produks[${productIndex}][foto_produk]`;
+        newFileInput.classList.add('hidden');
+        newFileInput.removeAttribute('onchange');
+        
+        // Use DataTransfer to copy files (works in modern browsers)
+        const dataTransfer = new DataTransfer();
+        for (let i = 0; i < imageInput.files.length; i++) {
+            dataTransfer.items.add(imageInput.files[i]);
+        }
+        newFileInput.files = dataTransfer.files;
+        
+        document.getElementById(`product-file-container-${productIndex}`).appendChild(newFileInput);
     }
 
     // Reset form
