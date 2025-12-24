@@ -13,7 +13,7 @@
 
     <!-- Navbar -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-[1440px] mx-auto px-4 md:px-8">
+        <div class="w-full mx-auto px-4 md:px-8">
             <div class="flex items-center justify-between h-14 md:h-20">
                 <!-- Logo -->
                 <h1 class="text-lg md:text-[32px] font-semibold text-[#1e1e1e]">SiHalalPKU</h1>

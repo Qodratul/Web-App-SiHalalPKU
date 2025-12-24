@@ -5,13 +5,25 @@
 @push('styles')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
-    #map { height: calc(100vh - 85px); width: 100%; }
+    #map { height: calc(100vh - 47px); width: 100%; }
+    @media (min-width: 768px) {
+        #map { height: calc(100vh - 85px); }
+    }
     .leaflet-popup-content-wrapper { 
         border-radius: 18px; 
         padding: 0;
     }
     .leaflet-popup-content { margin: 0; }
     .custom-marker { background: transparent; border: none; }
+    /* Fix map z-index to be below navbar */
+    .leaflet-pane,
+    .leaflet-control {
+        z-index: 40 !important;
+    }
+    .leaflet-top,
+    .leaflet-bottom {
+        z-index: 40 !important;
+    }
 </style>
 @endpush
 
@@ -19,12 +31,12 @@
 <!-- Navbar -->
 @include('components.navbar')
 
-<div class="pt-[85px] relative">
+<div class="pt-[47px] md:pt-[85px] relative">
     <!-- Full Screen Map -->
     <div id="map"></div>
 
     <!-- Search Overlay -->
-    <div class="absolute top-4 left-4 right-4 z-[1000] max-w-xl">
+    <div class="absolute top-4 left-4 right-4 z-[45] max-w-xl">
         <form action="{{ route('search.umkm') }}" method="GET">
             <div class="flex gap-2">
                 <input type="text" 

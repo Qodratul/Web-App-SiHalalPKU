@@ -10,6 +10,14 @@
         #map { height: 401px; }
     }
     .leaflet-popup-content-wrapper { border-radius: 18px; }
+    .leaflet-pane,
+    .leaflet-control {
+        z-index: 40 !important;
+    }
+    .leaflet-top,
+    .leaflet-bottom {
+        z-index: 40 !important;
+    }
 </style>
 @endpush
 
