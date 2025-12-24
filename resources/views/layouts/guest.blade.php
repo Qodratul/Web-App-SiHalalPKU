@@ -12,6 +12,12 @@
     @stack('styles')
 </head>
 <body class="font-['Inter'] bg-white min-h-screen">
+    {{-- Loading Overlay --}}
+    @include('components.loading')
+    
+    {{-- Toast Notifications --}}
+    @include('components.toast')
+    
     @yield('content')
     @stack('scripts')
 </body>

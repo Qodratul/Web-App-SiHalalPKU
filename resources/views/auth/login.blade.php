@@ -1,3 +1,4 @@
+@php View::share('disableAutoToast', true); @endphp
 @extends('layouts.guest')
 
 @section('title', 'Login - SiHalalPKU')

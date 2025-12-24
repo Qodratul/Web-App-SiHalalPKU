@@ -1,3 +1,4 @@
+@php View::share('disableAutoToast', true); @endphp
 @extends('layouts.app')
 
 @section('title', 'Kelola Data UMKM - SiHalalPKU')
@@ -42,7 +43,7 @@
     <!-- Back Button Bar -->
     <div class="w-full bg-gradient-to-b from-[#2d7e37] to-[#18471d] rounded-b-[15px] md:rounded-b-[30px]">
         <div class="w-full mx-auto px-4 md:px-8">
-            <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-1 md:gap-2 text-white font-bold hover:opacity-80 transition-opacity py-2 md:py-3">
+            <a href="{{ route('admin.dashboard') }}" data-loading="Memuat halaman" class="inline-flex items-center gap-1 md:gap-2 text-white font-bold hover:opacity-80 transition-opacity py-2 md:py-3">
                 <svg class="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z"/>
                 </svg>
@@ -129,11 +130,12 @@
                         </a>
                         <form action="{{ route('admin.umkm.destroy', $umkm->id) }}" 
                               method="POST" 
-                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus UMKM ini?')"
+                              id="delete-form-mobile-{{ $umkm->id }}"
                               class="flex-1">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" 
+                            <button type="button" 
+                                    onclick="confirmDelete('delete-form-mobile-{{ $umkm->id }}', '{{ $umkm->nama_usaha }}')"
                                     class="w-full inline-flex items-center justify-center gap-1 px-3 py-1.5 bg-[#ffe3e3] border-2 border-[#f24822] rounded-full text-[#f24822] text-[10px] font-medium hover:opacity-80 transition-opacity">
                                 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z"/>
@@ -251,10 +253,11 @@
                                         <!-- Hapus Data -->
                                         <form action="{{ route('admin.umkm.destroy', $umkm->id) }}" 
                                               method="POST" 
-                                              onsubmit="return confirm('Apakah Anda yakin ingin menghapus UMKM ini?')">
+                                              id="delete-form-desktop-{{ $umkm->id }}">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" 
+                                            <button type="button" 
+                                                    onclick="confirmDelete('delete-form-desktop-{{ $umkm->id }}', '{{ $umkm->nama_usaha }}')"
                                                     class="inline-flex items-center justify-center gap-2 w-full px-4 py-2 bg-[#ffe3e3] border-[3px] border-[#f24822] rounded-full text-[#f24822] font-medium hover:opacity-80 transition-opacity">
                                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                                     <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z"/>
@@ -303,3 +306,26 @@
     </main>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function confirmDelete(formId, namaUsaha) {
+        showConfirm(
+            `Data UMKM "${namaUsaha}" akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.`,
+            function() {
+                // Show loading
+                showLoading('Menghapus data UMKM');
+                // Submit the form
+                document.getElementById(formId).submit();
+            },
+            null,
+            {
+                title: 'Hapus Data UMKM?',
+                confirmText: 'Ya, Hapus',
+                cancelText: 'Batal',
+                type: 'error'
+            }
+        );
+    }
+</script>
+@endpush

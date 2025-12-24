@@ -83,12 +83,12 @@ class UmkmController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'deskripsi' => 'nullable|string',
-            'foto_usaha' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto_usaha' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'statusHalal' => 'boolean',
             'produks' => 'nullable|array',
             'produks.*.nama_produk' => 'required_with:produks|string|max:255',
             'produks.*.harga' => 'required_with:produks|numeric|min:0',
-            'produks.*.foto_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'produks.*.foto_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         try {
@@ -232,12 +232,12 @@ class UmkmController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'deskripsi' => 'nullable|string',
-            'foto_usaha' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto_usaha' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'statusHalal' => 'boolean',
             'produks' => 'nullable|array',
             'produks.*.nama_produk' => 'required_with:produks|string|max:255',
             'produks.*.harga' => 'required_with:produks|numeric|min:0',
-            'produks.*.foto_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'produks.*.foto_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         try {

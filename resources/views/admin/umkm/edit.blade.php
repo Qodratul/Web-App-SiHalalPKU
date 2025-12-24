@@ -46,7 +46,7 @@
     <!-- Back Button Bar -->
     <div class="w-full bg-gradient-to-b from-[#2d7e37] to-[#18471d] rounded-b-[15px] md:rounded-b-[30px]">
         <div class="w-full mx-auto px-4 md:px-8">
-            <a href="{{ route('admin.umkm.index') }}" class="inline-flex items-center gap-1 md:gap-2 text-white font-bold hover:opacity-80 transition-opacity py-2 md:py-3">
+            <a href="{{ route('admin.umkm.index') }}" data-loading="Memuat halaman" class="inline-flex items-center gap-1 md:gap-2 text-white font-bold hover:opacity-80 transition-opacity py-2 md:py-3">
                 <svg class="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z"/>
                 </svg>
@@ -63,17 +63,8 @@
             <p class="text-xs md:text-2xl font-semibold text-[#252525]">Selamat Datang, {{ Auth::user()->nama ?? 'Admin' }}!</p>
         </div>
 
-        <!-- Error Messages -->
-        @if($errors->any())
-            <div class="mb-4 md:mb-6 p-3 md:p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-xs md:text-base">
-                @foreach($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
-
         <!-- Form -->
-        <form action="{{ route('admin.umkm.update', $umkm->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.umkm.update', $umkm->id) }}" method="POST" enctype="multipart/form-data" data-loading="Memperbarui data UMKM">
             @csrf
             @method('PUT')
 
