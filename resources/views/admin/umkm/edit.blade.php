@@ -180,7 +180,7 @@
                     
                     <div class="bg-[#f6f6f6] border border-[#2d7e37] rounded-[16px] md:rounded-[24px] shadow-md p-3 md:p-6 min-h-[280px] md:min-h-[409px]">
                         <!-- Existing Products -->
-                        <div id="products-list" class="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                        <div id="products-list" class="space-y-2 md:space-y-3 mb-4 md:mb-6 max-h-[200px] md:max-h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#2d7e37] scrollbar-track-gray-200">
                             @foreach($umkm->produks as $index => $produk)
                                 <div class="flex items-center gap-2 md:gap-4 p-2 md:p-3 bg-white rounded-lg border border-gray-200" id="existing-product-{{ $produk->id }}">
                                     <div class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">

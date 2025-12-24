@@ -218,7 +218,7 @@
                         </div>
 
                         <!-- Added Products List -->
-                        <div id="products-list" class="space-y-2 md:space-y-3 border-t border-gray-300 pt-3 md:pt-4">
+                        <div id="products-list" class="space-y-2 md:space-y-3 border-t border-gray-300 pt-3 md:pt-4 max-h-[200px] md:max-h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#2d7e37] scrollbar-track-gray-200">
                             <!-- Products will be added here dynamically -->
                         </div>
 

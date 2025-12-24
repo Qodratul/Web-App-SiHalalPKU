@@ -54,3 +54,27 @@
 .custom-marker svg {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #2d7e37 #e5e7eb;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #2d7e37;
+    border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #18471d;
+}

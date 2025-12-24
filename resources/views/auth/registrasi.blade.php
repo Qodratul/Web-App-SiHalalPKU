@@ -10,6 +10,7 @@
         <!-- Logo Section - Fixed at top -->
         <div class="w-full max-w-[356px] md:max-w-[584px] flex items-center gap-1 md:gap-2 flex-shrink-0">
             <img src="{{ asset('images/logo/logo_lppm.webp') }}" alt="LPPM UIN SUSKA RIAU" class="h-[39px] w-auto md:h-[60px] object-contain">
+            <img src="{{ asset('images/logo/pusatp3h.webp') }}" alt="Pusat P3H" class="h-[39px] w-auto md:h-[60px] object-contain">
             <img src="{{ asset('images/logo/logo_uin.webp') }}" alt="UIN SUSKA" class="h-[39px] w-auto md:h-[60px] object-contain">
             <img src="{{ asset('images/logo/logo_bhalal.webp') }}" alt="HALAL" class="h-[34px] w-auto md:h-[55px] object-contain">
         </div>
