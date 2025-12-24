@@ -43,14 +43,16 @@
         </div>
     </nav>
 
-    <!-- Back Button -->
-    <div class="max-w-[1440px] mx-auto px-3 md:px-4 mt-2 md:mt-4">
-        <a href="{{ route('admin.umkm.index') }}" class="inline-flex items-center gap-1 md:gap-2 text-white font-bold hover:opacity-80 transition-opacity">
-            <svg class="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z"/>
-            </svg>
-            <span class="text-xs md:text-base">Kembali</span>
-        </a>
+    <!-- Back Button Bar -->
+    <div class="w-full bg-gradient-to-b from-[#2d7e37] to-[#18471d] rounded-b-[15px] md:rounded-b-[30px]">
+        <div class="w-full mx-auto px-4 md:px-8">
+            <a href="{{ route('admin.umkm.index') }}" class="inline-flex items-center gap-1 md:gap-2 text-white font-bold hover:opacity-80 transition-opacity py-2 md:py-3">
+                <svg class="w-[18px] h-[18px] md:w-[30px] md:h-[30px]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 11H7.83L13.42 5.41L12 4L4 12L12 20L13.41 18.59L7.83 13H20V11Z"/>
+                </svg>
+                <span class="text-xs md:text-base">Kembali</span>
+            </a>
+        </div>
     </div>
 
     <!-- Main Content -->
